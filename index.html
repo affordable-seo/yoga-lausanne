@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<link rel="canonical" href="https://yoga-lausanne.vercel.app/">
+  <link rel="icon" href="/images/favicon.png" type="image/png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cours de Yoga Lausanne | Centre Anama – Yoga Hatha, Yin & Ashtanga</title>
+  <meta name="description" content="Découvrez le Yoga à Lausanne. Cours privés et en petits groupes, Yin Yoga, Hatha et Ashtanga au Centre Anama avec Irène Fresu dans le canton de Vaud.">
+
+  <!-- Font Awesome: non-blocking async load -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+
+  <!-- Google Fonts: non-blocking async load -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
+
+  <style>
+    /* =============================================
+       DESIGN TOKENS
+    ============================================= */
+    :root {
+      --ivory:        #F8F4EE;
+      --ivory-mid:    #EDE7DC;
+      --stone:        #C8B89A;
+      --stone-dark:   #9E8A72;
+      --gold:         #B8860B;
+      --gold-light:   #D4A843;
+      --terracotta:   #C46A3A;
+      --terra-light:  #E08A5E;
+      --sage:         #7A9E8C;
+      --sage-light:   #B5D1C4;
+      --ink:          #1C2B38;
+      --ink-mid:      #3B4F5E;
+      --ink-soft:     #5E7282;
+      --white:        #FFFFFF;
+      --glass-bg:     rgba(248, 244, 238, 0.72);
+      --glass-border: rgba(200, 184, 154, 0.35);
+
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body:    'Jost', system-ui, sans-serif;
+
+      --radius-sm:  12px;
+      --radius-md:  20px;
+      --radius-lg:  32px;
+      --radius-xl:  48px;
+
+      --shadow-sm:  0 2px 12px rgba(28,43,56,0.06);
+      --shadow-md:  0 8px 28px rgba(28,43,56,0.10);
+      --shadow-lg:  0 20px 50px rgba(28,43,56,0.14);
+
+      --transition: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* =============================================
+       RESET & BASE
+    ============================================= */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--ivory);
+      color: var(--ink);
+      line-height: 1.65;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+    }
+
+    /* =============================================
+       LAYOUT
+    ============================================= */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 clamp(20px, 5vw, 48px);
+    }
+
+    section {
+      padding: clamp(60px, 8vw, 100px) 0;
+    }
+
+    /* =============================================
+       TYPOGRAPHY
+    ============================================= */
+    .display-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-sub {
+      font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+      color: var(--ink-soft);
+      max-width: 620px;
+      font-weight: 300;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 1rem;
+    }
+
+    strong, b { color: var(--ink); font-weight: 600; }
+    h2, h3 { font-family: var(--font-display); font-weight: 600; }
+
+    p {
+      font-size: clamp(0.95rem, 1.4vw, 1.05rem);
+      color: var(--ink-mid);
+      line-height: 1.75;
+    }
+
+    /* =============================================
+       DIVIDERS
+    ============================================= */
+    .ornament {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 1.5rem;
+    }
+    .ornament::before, .ornament::after {
+      content: '';
+      flex: 1;
+      max-width: 40px;
+      height: 1px;
+      background: var(--stone);
+      opacity: 0.6;
+    }
+    .ornament i {
+      color: var(--terra-light);
+      font-size: 0.85rem;
+    }
+
+    /* =============================================
+       BUTTONS
+    ============================================= */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--terracotta);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+      padding: 14px 32px;
+      border-radius: 60px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 4px 16px rgba(196, 106, 58, 0.28);
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-primary::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
+      pointer-events: none;
+    }
+    .btn-primary:hover {
+      background: var(--terra-light);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(196, 106, 58, 0.36);
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: transparent;
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.95rem;
+      padding: 13px 30px;
+      border-radius: 60px;
+      text-decoration: none;
+      border: 1.5px solid var(--stone);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .btn-outline:hover {
+      border-color: var(--terracotta);
+      color: var(--terracotta);
+      background: rgba(196,106,58,0.05);
+    }
+
+    /* =============================================
+       GLASS CARD
+    ============================================= */
+    .glass-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* =============================================
+       HERO
+    ============================================= */
+    .hero {
+      height: 100vh;
+      min-height: 640px;
+      background: linear-gradient(
+        160deg,
+        rgba(28, 43, 56, 0.22) 0%,
+        rgba(28, 43, 56, 0.55) 100%
+      ),
+      url('/images/cours-yoga-lausanne.webp') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle bottom vignette */
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 160px;
+      background: linear-gradient(to top, var(--ivory) 0%, transparent 100%);
+    }
+
+    /* Decorative sun rays */
+    .hero-rays {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .hero-rays::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 140%;
+      height: 140%;
+      background: conic-gradient(
+        from 0deg,
+        transparent 0deg,
+        rgba(255,220,150,0.04) 5deg,
+        transparent 10deg,
+        rgba(255,220,150,0.04) 15deg,
+        transparent 20deg,
+        rgba(255,220,150,0.04) 25deg,
+        transparent 30deg,
+        rgba(255,220,150,0.04) 35deg,
+        transparent 40deg,
+        rgba(255,220,150,0.04) 45deg,
+        transparent 50deg,
+        rgba(255,220,150,0.04) 55deg,
+        transparent 60deg,
+        rgba(255,220,150,0.04) 65deg,
+        transparent 70deg,
+        rgba(255,220,150,0.04) 75deg,
+        transparent 80deg,
+        rgba(255,220,150,0.04) 85deg,
+        transparent 90deg,
+        rgba(255,220,150,0.04) 95deg,
+        transparent 100deg,
+        rgba(255,220,150,0.04) 105deg,
+        transparent 110deg,
+        rgba(255,220,150,0.04) 115deg,
+        transparent 120deg,
+        rgba(255,220,150,0.04) 125deg,
+        transparent 130deg,
+        rgba(255,220,150,0.04) 135deg,
+        transparent 360deg
+      );
+      animation: slowRotate 80s linear infinite;
+    }
+
+    @keyframes slowRotate {
+      from { transform: translateX(-50%) rotate(0deg); }
+      to   { transform: translateX(-50%) rotate(360deg); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+      padding: clamp(1.8rem, 4vw, 3rem) clamp(1.8rem, 5vw, 3.5rem);
+      margin: 0 20px;
+      background: rgba(248, 244, 238, 0.14);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(248, 244, 238, 0.22);
+      border-radius: var(--radius-xl);
+      animation: fadeUp 1s ease both;
+    }
+
+    .hero-content .ornament { justify-content: center; }
+    .hero-content .ornament::before,
+    .hero-content .ornament::after { background: rgba(255,255,255,0.5); }
+    .hero-content .ornament i { color: rgba(255,220,150,0.9); }
+
+    .hero-content h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 7vw, 5.2rem);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.1;
+      letter-spacing: -0.015em;
+      margin-bottom: 0.75rem;
+    }
+    .hero-content h1 em {
+      font-style: italic;
+      font-weight: 400;
+      color: rgba(255,220,150,0.92);
+    }
+
+    .hero-content p {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: rgba(255,255,255,0.88);
+      font-weight: 300;
+      letter-spacing: 0.02em;
+      margin-bottom: 0;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      animation: bounce 2.2s ease-in-out infinite;
+    }
+    .hero-scroll i { font-size: 1rem; }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(6px); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* =============================================
+       SECTION: LE YOGA C'EST QUOI
+    ============================================= */
+    .yoga-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 4vw, 5rem);
+      align-items: start;
+    }
+    .yoga-intro-text p { margin-top: 1.2rem; }
+    .yoga-intro-aside {
+      position: sticky;
+      top: 100px;
+    }
+
+    .aside-card {
+      background: var(--ink);
+      color: var(--ivory);
+      border-radius: var(--radius-lg);
+      padding: clamp(1.5rem, 3vw, 2.5rem);
+      position: relative;
+      overflow: hidden;
+    }
+    .aside-card::before {
+      content: 'ॐ';
+      position: absolute;
+      top: -10px;
+      right: 16px;
+      font-family: var(--font-display);
+      font-size: 9rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.05);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+    .aside-card .label {
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--terra-light);
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+    .aside-card p {
+      color: rgba(248,244,238,0.85);
+      font-style: italic;
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    /* Three Pillars */
+    .pillars-list {
+      list-style: none;
+      margin-top: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+    .pillars-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: var(--white);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.2rem;
+      border: 1px solid var(--ivory-mid);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+    .pillars-list li:hover {
+      border-color: var(--stone);
+      transform: translateX(4px);
+      box-shadow: var(--shadow-md);
+    }
+    .pillars-list li .pillar-icon {
+      width: 38px;
+      height: 38px;
+      min-width: 38px;
+      background: linear-gradient(135deg, var(--sage-light), rgba(122,158,140,0.3));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--ink);
+      font-size: 1rem;
+    }
+    .pillars-list li .pillar-text strong {
+      display: block;
+      font-size: 0.95rem;
+      margin-bottom: 0.2rem;
+    }
+    .pillars-list li .pillar-text span {
+      font-size: 0.88rem;
+      color: var(--ink-soft);
+    }
+
+    @media (max-width: 860px) {
+      .yoga-intro { grid-template-columns: 1fr; }
+      .yoga-intro-aside { position: static; }
+    }
+
+    /* =============================================
+       SECTION: COURS DE YOGA LAUSANNE
+    ============================================= */
+    .cours-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: clamp(2rem, 4vw, 5rem);
+      align-items: start;
+      margin-bottom: clamp(3rem, 5vw, 5rem);
+    }
+    .cours-text p { margin-top: 1.2rem; }
+
+    .cours-steps {
+      margin-top: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      counter-reset: step;
+    }
+    .cours-step {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 0.9rem 1.2rem;
+      background: var(--white);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--ivory-mid);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+    .cours-step:hover {
+      border-color: var(--sage);
+      box-shadow: var(--shadow-md);
+      transform: translateX(4px);
+    }
+    .cours-step-num {
+      width: 32px;
+      height: 32px;
+      min-width: 32px;
+      background: linear-gradient(135deg, var(--sage-light), rgba(122,158,140,0.25));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: 0.02em;
+    }
+    .cours-step-body strong {
+      display: block;
+      font-size: 0.9rem;
+      color: var(--ink);
+    }
+    .cours-step-body span {
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+    }
+
+    /* Styles card (dark aside) */
+    .styles-card {
+      background: var(--ink);
+      border-radius: var(--radius-lg);
+      padding: clamp(1.5rem, 3vw, 2.2rem);
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+    .styles-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 80% 20%, rgba(122, 158, 140, 0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .styles-card .card-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--sage-light);
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+    }
+    .style-pill-list {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 1.6rem;
+    }
+    .style-pill-list li {
+      background: rgba(122,158,140,0.18);
+      border: 1px solid rgba(122,158,140,0.35);
+      color: var(--sage-light);
+      font-size: 0.82rem;
+      font-weight: 500;
+      padding: 0.35rem 0.9rem;
+      border-radius: 40px;
+      letter-spacing: 0.03em;
+    }
+    .styles-card p {
+      color: rgba(248,244,238,0.7);
+      font-size: 0.92rem;
+      font-style: italic;
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 300;
+      line-height: 1.65;
+    }
+
+    @media (max-width: 860px) {
+      .cours-layout { grid-template-columns: 1fr; }
+    }
+
+    /* =============================================
+       SECTION: PLANNING & HORAIRES
+    ============================================= */
+    .planning-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 2.5rem 0 2.5rem;
+    }
+
+    .schedule-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: clamp(1.4rem, 2.5vw, 2rem);
+      border: 1px solid var(--ivory-mid);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .schedule-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--sage), var(--sage-light));
+      border-radius: 2px 2px 0 0;
+    }
+    .schedule-card.yin::before { background: linear-gradient(90deg, #8B6F8E, #B8A0BC); }
+    .schedule-card.intermediaire::before { background: linear-gradient(90deg, var(--terracotta), var(--terra-light)); }
+    .schedule-card.debutant::before { background: linear-gradient(90deg, var(--sage), var(--sage-light)); }
+
+    .schedule-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--stone);
+    }
+    .schedule-card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .schedule-card.yin .schedule-card-icon {
+      background: linear-gradient(135deg, rgba(139,111,142,0.2), rgba(184,160,188,0.1));
+    }
+    .schedule-card.intermediaire .schedule-card-icon {
+      background: linear-gradient(135deg, rgba(196,106,58,0.2), rgba(224,138,94,0.1));
+    }
+    .schedule-card.debutant .schedule-card-icon {
+      background: linear-gradient(135deg, rgba(122,158,140,0.2), rgba(181,209,196,0.1));
+    }
+    .schedule-card-icon i {
+      font-size: 1.25rem;
+      color: var(--ink);
+    }
+    .schedule-card h4 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+    .schedule-meta {
+      list-style: none;
+      border-top: 1px solid var(--ivory-mid);
+      padding-top: 0.9rem;
+      margin-top: 0.25rem;
+    }
+    .schedule-meta li {
+      margin: 0.45rem 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: var(--ink-mid);
+    }
+    .schedule-meta li i {
+      width: 20px;
+      color: var(--sage);
+      font-size: 0.85rem;
+    }
+    .schedule-card.yin .schedule-meta li i { color: #8B6F8E; }
+    .schedule-card.intermediaire .schedule-meta li i { color: var(--terracotta); }
+
+    /* Price CTA row */
+    .pricing-cta-row {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.4rem;
+      margin-top: 1rem;
+      padding: clamp(2rem, 4vw, 3rem);
+      background: var(--ink);
+      border-radius: var(--radius-lg);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .pricing-cta-row::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(122, 158, 140, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .pricing-cta-row .price-display {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 8vw, 5rem);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1;
+    }
+    .pricing-cta-row .price-display sup {
+      font-size: 0.45em;
+      vertical-align: super;
+      color: var(--stone);
+    }
+    .pricing-cta-row .price-desc {
+      color: rgba(248,244,238,0.65);
+      font-size: 0.95rem;
+      font-weight: 300;
+    }
+
+    /* =============================================
+       BENEFITS GRID
+    ============================================= */
+    .benefits-section-header {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 2.5rem;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .benefit-item {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 1.6rem 1.2rem;
+      text-align: center;
+      border: 1px solid var(--ivory-mid);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      opacity: 0;
+      transform: translateY(18px);
+      cursor: default;
+    }
+    .benefit-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.5s ease, transform 0.5s ease, box-shadow var(--transition), border-color var(--transition), background var(--transition);
+    }
+    .benefit-item:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--stone);
+      background: rgba(255,255,255,1);
+    }
+    .benefit-item i {
+      font-size: 1.7rem;
+      color: var(--sage);
+      margin-bottom: 0.85rem;
+      display: inline-block;
+      transition: color var(--transition), transform var(--transition);
+    }
+    .benefit-item:hover i {
+      color: var(--terracotta);
+      transform: scale(1.1);
+    }
+    .benefit-item span {
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: var(--ink-mid);
+      display: block;
+      line-height: 1.45;
+    }
+
+    /* Philosophy CTA */
+    .philosophy-banner {
+      margin-top: 3.5rem;
+      padding: clamp(2rem, 4vw, 3rem);
+      background: linear-gradient(135deg, rgba(122,158,140,0.12) 0%, rgba(196,106,58,0.08) 100%);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--glass-border);
+      text-align: center;
+    }
+    .philosophy-banner p {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--ink-mid);
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.65;
+    }
+
+    /* =============================================
+       SECTION: IRÈNE FRESU
+    ============================================= */
+    .irene-section {
+      padding-bottom: clamp(60px, 8vw, 100px);
+    }
+
+    /* Two-column layout: photo left, content right */
+    .irene-two-col {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: clamp(2rem, 4vw, 4rem);
+      align-items: center;
+    }
+
+    /* Photo column */
+    .irene-photo-col {
+      position: relative;
+    }
+    .irene-photo-wrap {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      aspect-ratio: 4 / 5;
+    }
+    .irene-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      transition: transform 0.8s var(--transition);
+    }
+    .irene-photo-wrap:hover img {
+      transform: scale(1.04);
+    }
+    /* Subtle gradient overlay at bottom of photo */
+    .irene-photo-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 35%;
+      background: linear-gradient(to top, rgba(28,43,56,0.45) 0%, transparent 100%);
+      pointer-events: none;
+      border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+    }
+    /* Floating location tag on the photo */
+    .irene-photo-tag {
+      position: absolute;
+      bottom: 1.4rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(248, 244, 238, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(200,184,154,0.5);
+      border-radius: 40px;
+      padding: 0.4rem 1.1rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--ink-mid);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      z-index: 2;
+      box-shadow: 0 4px 16px rgba(28,43,56,0.18);
+    }
+    .irene-photo-tag i {
+      color: var(--terracotta);
+      font-size: 0.8rem;
+    }
+
+    /* Decorative accent dot cluster */
+    .irene-photo-col::before {
+      content: '';
+      position: absolute;
+      top: -18px;
+      left: -18px;
+      width: 80px;
+      height: 80px;
+      background-image: radial-gradient(circle, var(--sage) 1.5px, transparent 1.5px);
+      background-size: 12px 12px;
+      opacity: 0.35;
+      pointer-events: none;
+      z-index: -1;
+    }
+    .irene-photo-col::after {
+      content: '';
+      position: absolute;
+      bottom: -18px;
+      right: -18px;
+      width: 80px;
+      height: 80px;
+      background-image: radial-gradient(circle, var(--terracotta) 1.5px, transparent 1.5px);
+      background-size: 12px 12px;
+      opacity: 0.3;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* Content column */
+    .irene-content-col {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .irene-content-col h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.25;
+    }
+    .irene-content-col p {
+      font-size: clamp(0.9rem, 1.4vw, 1rem);
+      color: var(--ink-mid);
+    }
+
+    .accent-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--terracotta);
+      padding: 0.4rem 1.1rem;
+      border-radius: 40px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      text-decoration: none;
+      transition: var(--transition);
+      box-shadow: 0 2px 10px rgba(196,106,58,0.28);
+      align-self: flex-start;
+    }
+    .accent-badge:hover {
+      background: var(--terra-light);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(196,106,58,0.36);
+    }
+
+    @media (max-width: 860px) {
+      .irene-two-col {
+        grid-template-columns: 1fr;
+      }
+      .irene-photo-wrap {
+        aspect-ratio: 3 / 2;
+        max-height: 420px;
+      }
+      .irene-photo-wrap img {
+        object-position: center 20%;
+      }
+    }
+
+    /* =============================================
+       SECTION: CONTACT & MAP
+    ============================================= */
+    .contact-map-wrapper {
+      display: grid;
+      grid-template-columns: 1.3fr 0.9fr;
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+    .map-container {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      min-height: 380px;
+    }
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 380px;
+      display: block;
+    }
+    .contact-glass {
+      background: var(--ink);
+      border-radius: var(--radius-lg);
+      padding: clamp(1.6rem, 3vw, 2.2rem);
+      color: var(--ivory);
+      border: 1px solid rgba(255,255,240,0.08);
+      box-shadow: var(--shadow-md);
+    }
+    .contact-glass h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--ivory);
+      margin-bottom: 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .contact-glass h3 i { color: var(--sage-light); }
+    .contact-glass p {
+      color: rgba(248,244,238,0.72);
+      font-size: 0.92rem;
+      margin: 0.6rem 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .contact-glass p i {
+      color: var(--sage-light);
+      margin-top: 2px;
+      min-width: 20px;
+    }
+    .contact-glass a {
+      color: var(--sage-light);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .contact-glass a:hover { color: var(--terra-light); }
+
+    .social-icons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.6rem;
+      padding-top: 1.4rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .social-icons a {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: rgba(248,244,238,0.7);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    .social-icons a:hover {
+      border-color: var(--sage-light);
+      color: var(--sage-light);
+      background: rgba(122,158,140,0.1);
+      transform: scale(1.1);
+    }
+
+    @media (max-width: 760px) {
+      .contact-map-wrapper { grid-template-columns: 1fr; }
+    }
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+    footer {
+      background: var(--ink);
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      color: rgba(248,244,238,0.45);
+      font-size: 0.82rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .lotus-pulse i {
+      font-size: 1.8rem;
+      color: var(--sage-light);
+      animation: lotusPulse 2.2s ease-in-out infinite;
+      filter: drop-shadow(0 2px 8px rgba(122,158,140,0.35));
+      display: inline-block;
+    }
+    @keyframes lotusPulse {
+      0%, 100% { transform: scale(0.92); opacity: 0.7; }
+      50%       { transform: scale(1.18); opacity: 1; filter: drop-shadow(0 0 14px rgba(122,158,140,0.8)); }
+    }
+    .footer-text { line-height: 1.6; }
+
+    /* =============================================
+       FLOATING BUTTONS
+    ============================================= */
+    .float-btn {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.22);
+      z-index: 1000;
+      transition: var(--transition);
+      text-decoration: none;
+    }
+    .float-btn.booking {
+      background: var(--terracotta);
+      color: var(--white);
+      bottom: 96px;
+      font-size: 1.5rem;
+      box-shadow: 0 6px 20px rgba(196,106,58,0.35);
+    }
+    .float-btn.whatsapp {
+      background: #25D366;
+      color: var(--white);
+    }
+    .float-btn:hover { transform: scale(1.08) translateY(-2px); }
+    .pulse { animation: pulse-anim 2s infinite; }
+    @keyframes pulse-anim {
+      0%   { box-shadow: 0 0 0 0 rgba(196,106,58,0.55); }
+      70%  { box-shadow: 0 0 0 14px rgba(196,106,58,0); }
+      100% { box-shadow: 0 0 0 0 rgba(196,106,58,0); }
+    }
+
+    @media (max-width: 600px) {
+      .float-btn { width: 48px; height: 48px; font-size: 1.4rem; right: 16px; bottom: 16px; }
+      .float-btn.booking { bottom: 76px; font-size: 1.3rem; }
+    }
+
+    /* =============================================
+       SCROLL REVEAL
+    ============================================= */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section-divider {
+      text-align: center;
+      margin: 0;
+      color: var(--stone);
+      font-size: 1.2rem;
+      opacity: 0.5;
+      letter-spacing: 0.5em;
+    }
+
+    .section-header { margin-bottom: 2.5rem; }
+  </style>
+</head>
+<body>
+
+<!-- ===================================================
+     HERO
+=================================================== -->
+<section class="hero">
+  <div class="hero-rays"></div>
+  <div class="hero-content">
+    <div class="ornament">
+      <i class="fas fa-sun"></i>
+    </div>
+    <h1>Yoga à<br><em>Lausanne</em></h1>
+    <p>Une philosophie de vie, au centre Anama</p>
+  </div>
+  <div class="hero-scroll">
+    <i class="fas fa-chevron-down"></i>
+    <span>Découvrir</span>
+  </div>
+</section>
+
+<!-- ===================================================
+     MAIN WRAPPER
+=================================================== -->
+<div class="container">
+
+  <!-- Le Yoga, c'est quoi ? -->
+  <section>
+    <div class="yoga-intro">
+      <div class="yoga-intro-text reveal">
+        <span class="section-label">Origines & Philosophie</span>
+        <h2 class="section-title">Le Yoga, c'est quoi ?</h2>
+        <p style="margin-top:1.2rem;">Il est essentiel de se rappeler que le Yoga <strong>transcende largement le cadre de la simple gymnastique</strong> ou de l'enchaînement de postures physiques. Bien plus qu'un exercice, il s'agit d'un véritable état d'équilibre global, une philosophie de vie qui nous propose un voyage vers notre centre intérieur.</p>
+
+        <p style="margin-top:1.6rem;"><strong>L'Harmonie des Trois Piliers</strong><br>Le Yoga agit comme un pont sacré, nous invitant à restaurer une harmonie profonde entre trois dimensions indissociables de notre être :</p>
+
+        <ul class="pillars-list">
+          <li>
+            <div class="pillar-icon"><i class="fas fa-person-walking"></i></div>
+            <div class="pillar-text">
+              <strong>Le Corps</strong>
+              <span>Le véhicule de notre expérience, que l'on honore par le mouvement.</span>
+            </div>
+          </li>
+          <li>
+            <div class="pillar-icon"><i class="fas fa-wind"></i></div>
+            <div class="pillar-text">
+              <strong>Le Souffle</strong>
+              <span>Le moteur vital qui anime chaque cellule.</span>
+            </div>
+          </li>
+          <li>
+            <div class="pillar-icon"><i class="fas fa-brain"></i></div>
+            <div class="pillar-text">
+              <strong>L'Esprit</strong>
+              <span>L'espace de la pensée qui, peu à peu, s'apaise pour laisser place à la clarté.</span>
+            </div>
+          </li>
+        </ul>
+
+        <p style="margin-top:1.6rem;"><strong>La Respiration : Le Fil d'Ariane</strong><br>Au cœur de cette pratique se trouve la respiration, véritable clé de voûte de l'édifice yogique. Elle n'est pas seulement un acte biologique ; elle est le lien invisible mais puissant qui unit le geste à l'intention.</p>
+        <p>En synchronisant chaque mouvement avec le souffle, nous quittons l'automatisme pour entrer dans une présence consciente. Le Yoga devient alors une <strong>méditation en mouvement</strong>, où chaque inspiration nourrit l'ancrage et chaque expiration libère les tensions, nous ancrant ainsi pleinement dans l'instant présent.</p>
+      </div>
+
+      <div class="yoga-intro-aside reveal" style="transition-delay:0.15s">
+        <div class="aside-card">
+          <div class="label">Essence du Yoga</div>
+          <p>Chaque inspiration nourrit l'ancrage. Chaque expiration libère les tensions. Le Yoga, une méditation en mouvement.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cours de Yoga Lausanne -->
+  <section>
+    <div class="cours-layout">
+      <div class="cours-text reveal">
+        <span class="section-label">Notre pratique</span>
+        <h2 class="section-title">Cours de Yoga Lausanne</h2>
+        <p style="margin-top:1.2rem;">Cours privés et en petits groupes. Chaque séance dans notre centre <strong>Anama à Lausanne</strong> se déroule dans une progression douce :</p>
+
+        <div class="cours-steps">
+          <div class="cours-step">
+            <div class="cours-step-num">01</div>
+            <div class="cours-step-body">
+              <strong>Pranayama</strong>
+              <span>Un temps de respirations pour préparer corps et esprit.</span>
+            </div>
+          </div>
+          <div class="cours-step">
+            <div class="cours-step-num">02</div>
+            <div class="cours-step-body">
+              <strong>Asanas</strong>
+              <span>Les postures, pratiquées avec conscience et bienveillance.</span>
+            </div>
+          </div>
+          <div class="cours-step">
+            <div class="cours-step-num">03</div>
+            <div class="cours-step-body">
+              <strong>Relaxation</strong>
+              <span>Un temps d'intégration pour pleinement ressentir les effets de la pratique.</span>
+            </div>
+          </div>
+        </div>
+
+        <p style="margin-top:1.4rem;">Le yoga traditionnel enseigné au Centre Anama s'inspire de différentes approches, adaptées selon l'énergie du moment et les besoins de chacun. <strong>L'essentiel est d'apprendre à écouter son corps avec bienveillance.</strong></p>
+      </div>
+
+      <div class="reveal" style="transition-delay:0.15s">
+        <div class="styles-card">
+          <div class="card-label">Approches enseignées</div>
+          <ul class="style-pill-list">
+            <li>Hatha Yoga</li>
+            <li>Ashtanga</li>
+            <li>Yin Yoga</li>
+            <li>Raja-Yoga</li>
+          </ul>
+          <p>Chaque approche est choisie selon l'énergie du groupe et les besoins individuels de chaque élève.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Planning & Horaires -->
+  <section>
+    <div class="reveal section-header">
+      <span class="section-label">Calendrier</span>
+      <h2 class="section-title">Planning et Horaires des Cours de Yoga à Lausanne</h2>
+    </div>
+
+    <div class="planning-grid">
+
+      <div class="schedule-card yin reveal" style="transition-delay:0.05s">
+        <div class="schedule-card-icon">
+          <i class="fas fa-moon"></i>
+        </div>
+        <h4>Yin Yoga</h4>
+        <ul class="schedule-meta">
+          <li><i class="fas fa-calendar-days"></i>Deux mercredis soirs par mois</li>
+          <li><i class="fas fa-clock"></i>18h30 – 20h00</li>
+          <li><i class="fas fa-layer-group"></i>Tous niveaux</li>
+        </ul>
+      </div>
+
+      <div class="schedule-card intermediaire reveal" style="transition-delay:0.12s">
+        <div class="schedule-card-icon">
+          <i class="fas fa-fire"></i>
+        </div>
+        <h4>Yoga niveau intermédiaire</h4>
+        <ul class="schedule-meta">
+          <li><i class="fas fa-calendar-days"></i>Tous les mercredis</li>
+          <li><i class="fas fa-clock"></i>09h00 – 10h30</li>
+          <li><i class="fas fa-layer-group"></i>Niveau intermédiaire</li>
+        </ul>
+      </div>
+
+      <div class="schedule-card debutant reveal" style="transition-delay:0.19s">
+        <div class="schedule-card-icon">
+          <i class="fas fa-seedling"></i>
+        </div>
+        <h4>Yoga niveau débutant</h4>
+        <ul class="schedule-meta">
+          <li><i class="fas fa-calendar-days"></i>Tous les vendredis</li>
+          <li><i class="fas fa-clock"></i>09h00 – 10h00</li>
+          <li><i class="fas fa-layer-group"></i>Débutants bienvenus</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="pricing-cta-row reveal">
+      <div style="position:relative;z-index:1">
+        <div class="price-display"><sup>CHF</sup>40</div>
+        <p class="price-desc" style="margin-top:0.5rem;">par séance</p>
+      </div>
+      <a href="https://wa.me/41763951953?text=Bonjour,%20j'aimerais%20m'inscrire%20%C3%A0%20un%20cours%20de%20yoga%20%C3%A0%20Lausanne." target="_blank" class="btn-primary" style="background:var(--terracotta);position:relative;z-index:1">
+        <i class="fab fa-whatsapp"></i> Réserver ma séance
+      </a>
+    </div>
+  </section>
+
+  <!-- Les bienfaits du yoga -->
+  <section>
+    <div class="benefits-section-header reveal">
+      <span class="section-label">Pourquoi pratiquer</span>
+      <h2 class="section-title">Les bienfaits du yoga</h2>
+      <p class="section-sub" style="margin-top:0.5rem;">Une pratique régulière transforme en profondeur votre rapport au corps, à l'esprit et au quotidien.</p>
+    </div>
+
+    <div class="benefits-grid">
+      <div class="benefit-item">
+        <i class="fas fa-heart-pulse"></i>
+        <span>Réduction du stress et de l'anxiété</span>
+      </div>
+      <div class="benefit-item">
+        <i class="fas fa-cloud-moon"></i>
+        <span>Apaisement du mental</span>
+      </div>
+      <div class="benefit-item">
+        <i class="fas fa-face-smile-relaxed"></i>
+        <span>Meilleure gestion des émotions</span>
+      </div>
+      <div class="benefit-item">
+        <i class="fas fa-dumbbell"></i>
+        <span>Souplesse et renforcement musculaire</span>
+      </div>
+      <div class="benefit-item">
+        <i class="fas fa-hand-holding-medical"></i>
+        <span>Soulagement des douleurs chroniques</span>
+      </div>
+      <div class="benefit-item">
+        <i class="fas fa-lightbulb"></i>
+        <span>Amélioration de la concentration et de la clarté mentale</span>
+      </div>
+      <div class="benefit-item">
+        <i class="fas fa-shield-heart"></i>
+        <span>Stimulation du système immunitaire</span>
+      </div>
+      <div class="benefit-item">
+        <i class="fas fa-bed"></i>
+        <span>Sommeil plus profond et réparateur</span>
+      </div>
+    </div>
+
+    <div class="philosophy-banner reveal">
+      <p>Bien au-delà d'une activité physique, le yoga est une philosophie de vie. Pratiqué régulièrement, il ouvre à une conscience élargie de soi et à un profond respect du corps et de l'esprit.</p>
+    </div>
+  </section>
+
+  <!-- Irène Fresu, votre prof de Yoga -->
+  <section class="irene-section" style="padding-top:0">
+    <div class="irene-two-col">
+
+      <!-- Photo column -->
+      <div class="irene-photo-col reveal">
+        <div class="irene-photo-wrap">
+          <img
+            src="/images/maitre-yogi-lausanne.webp"
+            alt="Irène Fresu, professeure de yoga à Lausanne, en posture au bord d'une rivière en Inde"
+            loading="lazy"
+          >
+          <div class="irene-photo-tag">
+            <i class="fas fa-map-pin"></i> Rishikesh, Inde
+          </div>
+        </div>
+      </div>
+
+      <!-- Content column -->
+      <div class="irene-content-col reveal" style="transition-delay:0.15s">
+        <span class="accent-badge">
+          <i class="fas fa-om"></i> Enseignante de Yoga depuis plus de 10 ans
+        </span>
+        <h2>Irène Fresu, votre prof de Yoga à Lausanne</h2>
+        <p>Le yoga et l'attrait pour l'Inde habitent mon esprit depuis mon plus jeune âge. Ce n'est qu'à l'aube de mes 34 ans que ce projet a pris vie : j'ai découvert cette terre lointaine qui est devenue, au fil du temps, mon refuge privilégié. C'est au détour d'une forêt indienne que ma rencontre avec un yogi a scellé le début d'une quête spirituelle qui m'accompagne encore chaque jour.</p>
+        <p>Une fois revenue en Suisse, j'ai suivi un cursus de formation de six ans, enrichi par des séjours réguliers en Inde, pour parfaire ma maîtrise et mon attachement à cette sagesse ancestrale.</p>
+        <p>Depuis une décennie, je partage et j'enseigne avec une joie profonde les principes et les vertus du yoga, guidant avec bienveillance tous ceux qui désirent explorer cette voie de transformation personnelle.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Contact & Map -->
+  <section>
+    <div class="reveal">
+      <span class="section-label">Nous trouver</span>
+      <h2 class="section-title">Contact & Accès</h2>
+    </div>
+    <div class="contact-map-wrapper">
+      <div class="map-container reveal" style="transition-delay:0.08s">
+        <iframe src="https://maps.google.com/maps?q=Centre%20Anama%20Rue%20de%20la%20Tour%2033%201004%20Lausanne&t=&z=16&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy" style="border:0;"></iframe>
+      </div>
+      <div class="contact-glass reveal" style="transition-delay:0.16s">
+        <h3><i class="fas fa-location-dot"></i> Centre Anama</h3>
+        <p><i class="fas fa-map-pin"></i> Rue de la Tour 33<br>1004 Lausanne</p>
+        <p><i class="fas fa-phone-alt"></i> <a href="tel:+41763951953">0041 (0) 76 395 19 53</a></p>
+        <p><i class="fas fa-globe"></i> <a href="https://www.centre-anama.ch" target="_blank" rel="nofollow">www.centre-anama.ch</a></p>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/centreanama_lausanne" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/CentreAnama" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-content">
+    <div class="lotus-pulse">
+      <i class="fas fa-sun"></i>
+    </div>
+    <div class="footer-text">
+      © 2026 Centre Anama – Yoga à Lausanne.<br>
+      Inspiration · Ancrage · Équilibre
+    </div>
+  </div>
+</footer>
+
+<!-- Floating Buttons -->
+<a href="https://wa.me/41763951953?text=Bonjour,%20j'aimerais%20avoir%20des%20renseignements%20sur%20les%20cours%20de%20yoga%20%C3%A0%20Lausanne." target="_blank" class="float-btn booking pulse" aria-label="Prendre rendez-vous">
+  <i class="fas fa-calendar-check"></i>
+</a>
+<a href="https://wa.me/41763951953?text=Bonjour,%20j'aimerais%20avoir%20des%20renseignements%20sur%20les%20cours%20de%20yoga%20%C3%A0%20Lausanne." target="_blank" class="float-btn whatsapp" aria-label="WhatsApp Yoga">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+  /* ── Scroll Reveal (general .reveal elements) ── */
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  /* ── Staggered Benefits Grid ── */
+  const benefitItems = document.querySelectorAll('.benefit-item');
+  const benefitObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        benefitItems.forEach((item, idx) => {
+          setTimeout(() => item.classList.add('visible'), idx * 65);
+        });
+        benefitObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.1 });
+  if (benefitItems.length) benefitObserver.observe(benefitItems[0].parentElement);
+
+  /* ── Fire on load too ── */
+  window.addEventListener('load', () => {
+    revealEls.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.92) el.classList.add('visible');
+    });
+  });
+</script>
+</body>
+</html>
