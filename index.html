@@ -1,15 +1,27 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-SC09FD3327"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-SC09FD3327');
+<!-- Google Tag Manager: deferred until first user interaction -->
+<script>
+  let gtmLoaded = false;
+  function loadGTM() {
+    if (gtmLoaded) return;
+    gtmLoaded = true;
+    const script = document.createElement('script');
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-SC09FD3327';
+    script.async = true;
+    document.head.appendChild(script);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SC09FD3327');
+    ['scroll', 'mousemove', 'touchstart'].forEach(e => window.removeEventListener(e, loadGTM));
+  }
+  ['scroll', 'mousemove', 'touchstart'].forEach(e => window.addEventListener(e, loadGTM, { once: true, passive: true }));
 </script>
+
+    
 <link rel="canonical" href="https://yoga-lausanne.vercel.app/">
   <link rel="icon" href="/images/favicon.png" type="image/png">
   <meta charset="UTF-8">
