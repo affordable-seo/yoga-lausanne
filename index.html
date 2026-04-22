@@ -1,43 +1,48 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-
-<!-- Google Tag Manager: deferred until first user interaction -->
-<script>
-  let gtmLoaded = false;
-  function loadGTM() {
-    if (gtmLoaded) return;
-    gtmLoaded = true;
-    const script = document.createElement('script');
-    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-SC09FD3327';
-    script.async = true;
-    document.head.appendChild(script);
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-SC09FD3327');
-    ['scroll', 'mousemove', 'touchstart'].forEach(e => window.removeEventListener(e, loadGTM));
-  }
-  ['scroll', 'mousemove', 'touchstart'].forEach(e => window.addEventListener(e, loadGTM, { once: true, passive: true }));
-</script>
-
-    
-<link rel="canonical" href="https://yoga-lausanne.vercel.app/">
-  <link rel="icon" href="/images/favicon.png" type="image/png">
+  <!-- 1. Charset must be first to prevent re-parsing -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cours de Yoga Lausanne | Centre Anama – Yoga Hatha, Yin & Ashtanga</title>
   <meta name="description" content="Découvrez le Yoga à Lausanne. Cours privés et en petits groupes, Yin Yoga, Hatha et Ashtanga au Centre Anama avec Irène Fresu dans le canton de Vaud.">
+  <link rel="canonical" href="https://yoga-lausanne.vercel.app/">
+  <link rel="icon" href="/images/favicon.png" type="image/png">
 
-  <!-- Font Awesome: non-blocking async load -->
+  <!-- 2. Preload LCP hero image so the browser fetches it as early as possible -->
+  <link rel="preload" as="image" href="/images/cours-yoga-lausanne.webp" fetchpriority="high">
+
+  <!-- 3. Preconnect to all third-party origins before any resource requests -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+  <!-- 4. Font Awesome: non-blocking async load -->
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 
-  <!-- Google Fonts: non-blocking async load -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- 5. Google Fonts: non-blocking async load -->
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
+
+  <!-- 6. Google Tag Manager: deferred until first user interaction -->
+  <script>
+    let gtmLoaded = false;
+    function loadGTM() {
+      if (gtmLoaded) return;
+      gtmLoaded = true;
+      const script = document.createElement('script');
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-SC09FD3327';
+      script.async = true;
+      document.head.appendChild(script);
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-SC09FD3327');
+      ['scroll', 'mousemove', 'touchstart'].forEach(e => window.removeEventListener(e, loadGTM));
+    }
+    ['scroll', 'mousemove', 'touchstart'].forEach(e => window.addEventListener(e, loadGTM, { once: true, passive: true }));
+  </script>
 
   <style>
     /* =============================================
@@ -86,8 +91,11 @@
     }
 
     html {
-      scroll-behavior: smooth;
       -webkit-font-smoothing: antialiased;
+    }
+    /* Respect user's motion preference — avoids forced scroll jank on low-end devices */
+    @media (prefers-reduced-motion: no-preference) {
+      html { scroll-behavior: smooth; }
     }
 
     body {
@@ -298,6 +306,7 @@
       transform: translateX(-50%);
       width: 140%;
       height: 140%;
+      will-change: transform; /* promote to GPU layer for smooth rotation */
       background: conic-gradient(
         from 0deg,
         transparent 0deg,
@@ -613,10 +622,9 @@
     }
     .styles-card p {
       color: rgba(248,244,238,0.7);
-      font-size: 0.92rem;
       font-style: italic;
       font-family: var(--font-display);
-      font-size: 1.1rem;
+      font-size: 1.1rem; /* removed duplicate 0.92rem declaration */
       font-weight: 300;
       line-height: 1.65;
     }
@@ -1142,7 +1150,7 @@
       color: var(--white);
     }
     .float-btn:hover { transform: scale(1.08) translateY(-2px); }
-    .pulse { animation: pulse-anim 2s infinite; }
+    .pulse { animation: pulse-anim 2s infinite; will-change: box-shadow; }
     @keyframes pulse-anim {
       0%   { box-shadow: 0 0 0 0 rgba(196,106,58,0.55); }
       70%  { box-shadow: 0 0 0 14px rgba(196,106,58,0); }
@@ -1418,6 +1426,8 @@
             src="/images/maitre-yogi-lausanne.webp"
             alt="Irène Fresu, professeure de yoga à Lausanne, en posture au bord d'une rivière en Inde"
             loading="lazy"
+            width="480"
+            height="600"
           >
           <div class="irene-photo-tag">
             <i class="fas fa-map-pin"></i> Rishikesh, Inde
@@ -1447,7 +1457,7 @@
     </div>
     <div class="contact-map-wrapper">
       <div class="map-container reveal" style="transition-delay:0.08s">
-        <iframe src="https://maps.google.com/maps?q=Centre%20Anama%20Rue%20de%20la%20Tour%2033%201004%20Lausanne&t=&z=16&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy" style="border:0;"></iframe>
+        <iframe src="https://maps.google.com/maps?q=Centre%20Anama%20Rue%20de%20la%20Tour%2033%201004%20Lausanne&t=&z=16&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy" title="Localisation du Centre Anama, Rue de la Tour 33, Lausanne" style="border:0;"></iframe>
       </div>
       <div class="contact-glass reveal" style="transition-delay:0.16s">
         <h3><i class="fas fa-location-dot"></i> Centre Anama</h3>
